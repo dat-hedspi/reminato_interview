@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2022_04_26_062859) do
 
-  create_table "model_tests", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "model_tests", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "link_youtube"
     t.text "description"
     t.integer "user_id"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_04_26_062859) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "relationships", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2022_04_26_062859) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: ""
     t.datetime "created_at", precision: 6, null: false
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 2022_04_26_062859) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "votes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "votes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
