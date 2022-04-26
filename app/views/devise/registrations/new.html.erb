@@ -1,0 +1,51 @@
+<div class="limiter">
+   <div class="container-login100">
+      <div class="wrap-login100">
+         <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: {class: "login100-form validate-form"} do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <span class="login100-form-title p-b-43">
+            Signup
+          </span>
+          <div class="wrap-input100 validate-input">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input100" %>
+            <span class="focus-input100"></span>
+            <%= f.label :email, class: "label-input100" %>
+          </div>
+
+          <div class="wrap-input100 validate-input" style="margin-bottom: 35px;">
+            <%= f.password_field :password, autocomplete: "new-password", class: "input100" %>
+            <span class="focus-input100"></span>
+            <%= f.label :password, class: "label-input100" %>
+            <% if @minimum_password_length %>
+              <em class="small" style="color: #999999">(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+          </div>
+
+          <div class="wrap-input100 validate-input">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input100" %>
+            <span class="focus-input100"></span>
+            <%= f.label :password_confirmation, class: "label-input100" %>
+          </div>
+
+          <div class="flex-sb-m w-full p-t-3 p-b-32 mt-3 row">
+            <% if devise_mapping.rememberable? %>
+              <div class="contact100-form-checkbox col-6">
+                <%= f.check_box :remember_me, class: "input-checkbox100" %>
+                <%= f.label :remember_me, class: "label-checkbox100" %>
+              </div>
+            <% end %>
+            <div class="col-6 <%= devise_mapping.rememberable? ? 'justify-content-end d-flex' : '' %>">
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+
+
+          <div class="container-login100-form-btn actions mt-3">
+            <%= f.submit "Sign up", class: "login100-form-btn" %>
+          </div>
+
+        <% end %>
+        <div class="login100-more" style="background-image: url(<%= asset_path 'bg-01.jpg' %>);"></div>
+      </div>
+   </div>
+</div>
