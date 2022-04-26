@@ -25,6 +25,11 @@
           <% end %>
         </li>
         <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to users_path, class: "nav-link #{controller_name == 'users' ? 'active' : ''} d-flex flex-column text-center" do %>
+              <i class="fas fa-users fa-lg"></i><span>Users</span>
+            <% end %>
+          </li>
           <li class="nav-item dropdown">
             <%= link_to shares_path, class: "nav-link #{controller_name == 'shares' ? 'active' : ''} d-flex flex-column text-center" do %>
               <i class="fas fa-share-alt-square fa-lg"></i><span>Share</span>
@@ -39,17 +44,12 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <img
-                src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg"
-                class="rounded-circle"
-                height="30"
-                alt=""
-                loading="lazy"
-              />
+              <%= gravatar_for current_user, size: 150 %>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">My profile</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li>
+                <%= link_to "My profile", current_user, class: "dropdown-item" %>
+              </li>
               <li>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item"  %>
               </li>

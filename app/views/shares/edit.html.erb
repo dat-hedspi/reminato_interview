@@ -1,5 +1,8 @@
 <% provide(:button_title, "Update") %>
 <div class="container mt-7">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
   <div class="w-50 m-auto p-5 border rounded bg-white text-center position-relative">
     <h3 class="text-center mb-4">Share a youtube movie</h3>
     <%= render "shares/form", post: @post %>
