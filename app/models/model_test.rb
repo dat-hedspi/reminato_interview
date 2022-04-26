@@ -1,0 +1,2 @@
+class ModelTest < ApplicationRecord
+end
