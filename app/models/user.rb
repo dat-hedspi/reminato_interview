@@ -21,4 +21,22 @@ class User < ApplicationRecord
   def email_changed?
     false
   end
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    following.delete(other_user)
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
+  class << self
+    def search_by_name(keyword)
+      keyword.present? ? where("name like ?", "%#{keyword}%") : all
+    end
+  end
 end

@@ -1,0 +1,47 @@
+<div class="col-md-12 grid-margin">
+  <div class="card rounded">
+    <div class="card-header">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <%= gravatar_for post.user, size: 150 %>
+          <div class="ms-3 d-flex flex-wrap align-items-center">
+            <p class="mb-0 col-12"><%= post.user.name %></p>
+            <p class="mb-0 col-12"><%= time_ago_in_words(post.created_at) %> ago.</p>
+          </div>
+        </div>
+        <% if current_user?(post.user) %>
+          <div class="dropdown">
+            <button class="btn p-0 dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal icon-lg pb-3px">
+                <circle cx="12" cy="12" r="1"></circle>
+                <circle cx="19" cy="12" r="1"></circle>
+                <circle cx="5" cy="12" r="1"></circle>
+              </svg>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+              <%= link_to edit_share_path(post.id), class: "dropdown-item d-flex align-items-center" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy icon-sm mr-2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span class="ms-2">Edit</span>
+              <% end %>
+              <%= link_to post, method: :delete, data: { confirm: "You sure?" }, class: "dropdown-item d-flex align-items-center" do %>
+                <i class="fas fa-trash fa-lg"></i>
+                <span class="ms-3">Delete</span>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="mb-3 tx-14"><%= post.description %></p>
+      <div class="position-relative custom-iframe-wrap">
+        <iframe class="w-100 position-absolute custom-iframe"
+          src="<%= post.link_youtube %>">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
