@@ -3,7 +3,10 @@
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <i class="fas fa-home fa-lg fa-2x"></i>
+      <b>Funny Movies</b>
+    <% end %>
 
     <!-- Toggle button -->
     <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
@@ -22,6 +25,11 @@
           <% end %>
         </li>
         <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <%= link_to shares_path, class: "nav-link #{controller_name == 'shares' ? 'active' : ''} d-flex flex-column text-center" do %>
+              <i class="fas fa-share-alt-square fa-lg"></i><span>Share</span>
+            <% end %>
+          </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle d-flex align-items-center"
@@ -50,6 +58,7 @@
         <% else %>
           <li class="nav-item">
             <%= link_to new_user_session_path, class: "nav-link d-flex flex-column text-center #{controller_name == 'sessions' ? 'active' : ''}" do %>
+              <i class="fas fa-sign-in-alt fa-lg"></i>
               <span>Login</span>
             <% end %>
           </li>

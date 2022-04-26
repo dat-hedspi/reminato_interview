@@ -219,3 +219,16 @@ img {
 .mt-7 {
   margin-top: 7rem;
 }
+
+.custom-iframe-wrap {
+  width: 100%;
+  padding-top: 75%;
+
+  .custom-iframe {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+  }
+}

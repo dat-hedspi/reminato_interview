@@ -1,0 +1,13 @@
+<%= form_for post, class: "" do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="mb-3 text-start">
+    <%= f.label :link_youtube, class: "form-label" %>
+    <%= f.text_field :link_youtube, class: "form-control bg-white" %>
+  </div>
+  <div class="mb-3 text-start">
+    <%= f.label :description, class: "form-label" %>
+    <%= f.text_area :description, class: "form-control bg-white", rows: 6 %>
+  </div>
+  <%= f.submit yield(:button_title), class: "btn btn-primary text-white rounded" %>
+<% end %>
