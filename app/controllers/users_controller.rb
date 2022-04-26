@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   before_action :find_user, only: %w[show following followers]
 
   def index
-    @users = User.search_by_name(params[:search]).paginate(page: params[:page])
+    @users = User.search_by_name(params[:search]).paginate(page: params[:page], per_page: 12)
   end
 
   def show
-    @posts = @user.posts.paginate(page: params[:page])
+    @posts = @user.posts.paginate(page: params[:page], per_page: 5)
   end
 
   def following
